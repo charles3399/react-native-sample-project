@@ -1,0 +1,1 @@
+export const getFormattedDate = (date: any) => `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
