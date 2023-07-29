@@ -1,13 +1,18 @@
 export interface ExpenseItemProp {
     description: string,
     amount: number,
-    date: string,
+    date: Date = new Date(),
     id: string,
 }
 
 export interface ExpenseSummaryProp {
-    expenses: Array<any>,
-    periodName: String
+    expenses?: any,
+    periodName?: String
+}
+
+export interface ExpensesOutputProp {
+    expenses?: any,
+    expensesPeriod?: String
 }
 
 export interface ManageExpensesProp {
@@ -22,3 +27,19 @@ export interface IconButtonProp {
     onPress: any
 }
 
+export interface ButtonProp {
+    onPress: any,
+    children: any,
+    mode?: string,
+    style?: object
+}
+
+export interface contextProp {
+    description: string,
+    date: Date = new Date(),
+    amount: number,
+}
+
+export type ACTIONTYPE = | { type: 'ADD', payload: any }
+    | { type: 'UPDATE', payload: any }
+    | { type: 'DELETE', payload: any }
