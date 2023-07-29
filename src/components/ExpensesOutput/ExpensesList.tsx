@@ -1,15 +1,10 @@
 import { FlatList } from 'react-native'
 import ExpenseItem from './ExpenseItem'
+import { ExpenseListProp } from '@util/types'
 
-interface Props {
-    expenses: Array<any>
-}
+const renderExpenseItem = (itemData: any) => <ExpenseItem {...itemData.item} />
 
-const renderExpenseItem = (itemData: any) => {
-    return <ExpenseItem {...itemData.item} />
-}
-
-function ExpensesList({ expenses }: Props): JSX.Element {
+function ExpensesList({ expenses }: ExpenseListProp): JSX.Element {
     console.log('EXPENSESs', expenses)
     return (
         <FlatList

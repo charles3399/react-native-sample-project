@@ -22,7 +22,13 @@ const RecentExpenses = (): JSX.Element => {
 
     console.log('recentExpenses',recentExpenses)
 
-    return <ExpensesOutput expenses={recentExpenses} expensesPeriod="Last 7 Days" />
+    return (
+        <ExpensesOutput
+            expenses={recentExpenses}
+            expensesPeriod="Last 7 Days"
+            fallBackText="No expenses registered for the last 7 days."
+        />
+    )
 }
 
 export default RecentExpenses;

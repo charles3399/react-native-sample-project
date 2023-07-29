@@ -1,8 +1,11 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { StatusBar } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import { AppNavigatorNavigationProp } from '@util/types';
 
 import AllExpenses from '../screens/AllExpenses';
 import ManageExpenses from '../screens/ManageExpenses';
@@ -12,18 +15,7 @@ import { GlobalStyles } from 'constants/GlobalStyles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import IconButton from '@components/UI/IconButton';
 
-type RootStackParamList = {
-    ManageExpenses: {
-        description: string,
-        amount: number,
-        date: string,
-    } | undefined,
-    RecentExpenses: object | undefined,
-    AllExpenses: object | undefined,
-    ExpensesOverview: object | undefined
-}
-
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<AppNavigatorNavigationProp>();
 const BottomTab = createBottomTabNavigator();
 
 const ExpensesOverview = (): JSX.Element => {
@@ -65,6 +57,7 @@ function AppNavigator() {
 
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
+            <StatusBar backgroundColor={GlobalStyles.colors.primary500} />
             <NavigationContainer>
                 <Stack.Navigator screenOptions={{
                     headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },

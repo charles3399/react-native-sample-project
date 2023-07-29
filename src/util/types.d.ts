@@ -1,3 +1,14 @@
+export type AppNavigatorNavigationProp = {
+    ManageExpenses: {
+        description: string,
+        amount: number,
+        date: Date = new Date(),
+    } | undefined,
+    RecentExpenses: object | undefined,
+    AllExpenses: object | undefined,
+    ExpensesOverview: object | undefined
+}
+
 export interface ExpenseItemProp {
     description: string,
     amount: number,
@@ -5,14 +16,28 @@ export interface ExpenseItemProp {
     id: string,
 }
 
+export type ExpenseItemNavigationProp = {
+    ManageExpenses: {
+        description: string,
+        amount: number,
+        date: Date = new Date(),
+        expenseId: string,
+    } | undefined
+}
+
 export interface ExpenseSummaryProp {
     expenses?: any,
-    periodName?: String
+    periodName?: string
+}
+
+export interface ExpenseListProp {
+    expenses: Array<any>
 }
 
 export interface ExpensesOutputProp {
     expenses?: any,
-    expensesPeriod?: String
+    expensesPeriod?: string
+    fallBackText?: string
 }
 
 export interface ManageExpensesProp {

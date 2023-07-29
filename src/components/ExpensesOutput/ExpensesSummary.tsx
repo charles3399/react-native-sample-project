@@ -3,7 +3,7 @@ import { GlobalStyles } from 'constants/GlobalStyles';
 import { ExpenseSummaryProp } from '@util/types'
 
 function ExpensesSummary({ expenses, periodName }: ExpenseSummaryProp): JSX.Element {
-    const expensesSum = expenses.reduce((sum, expense) => {
+    const expensesSum = expenses.reduce((sum: number, expense: any) => {
         return sum + expense.amount
     }, 0)
 

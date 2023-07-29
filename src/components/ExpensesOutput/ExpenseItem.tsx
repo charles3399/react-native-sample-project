@@ -3,19 +3,10 @@ import { GlobalStyles } from 'constants/GlobalStyles';
 import { getFormattedDate } from 'util/date';
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { ExpenseItemProp } from '@util/types'
-
-type RootStackParamList = {
-    ManageExpenses: {
-        description: string,
-        amount: number,
-        date: string,
-        expenseId: string,
-    } | undefined
-}
+import { ExpenseItemProp, ExpenseItemNavigationProp } from '@util/types'
 
 const ExpenseItem = ({ description, amount, date, id }: ExpenseItemProp): JSX.Element => {
-    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+    const navigation = useNavigation<StackNavigationProp<ExpenseItemNavigationProp>>();
 
     const expensePressedHandler = () => {
         navigation.navigate('ManageExpenses', {
