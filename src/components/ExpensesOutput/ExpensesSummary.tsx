@@ -1,12 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native'
-import { GlobalStyles } from 'constants/GlobalStyles'
+import { GlobalStyles } from 'constants/GlobalStyles';
+import { ExpenseSummaryProp } from '@util/types'
 
-interface Props {
-    expenses: Array<any>,
-    periodName: String
-}
-
-function ExpensesSummary({ expenses, periodName }: Props): JSX.Element {
+function ExpensesSummary({ expenses, periodName }: ExpenseSummaryProp): JSX.Element {
     const expensesSum = expenses.reduce((sum, expense) => {
         return sum + expense.amount
     }, 0)
@@ -23,6 +19,7 @@ export default ExpensesSummary
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 10,
         padding: 8,
         backgroundColor: GlobalStyles.colors.primary50,
         borderRadius: 6,

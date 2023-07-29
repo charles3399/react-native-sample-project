@@ -1,16 +1,33 @@
 import { View, Pressable, Text, StyleSheet } from 'react-native'
-import { GlobalStyles } from 'constants/GlobalStyles'
-import { getFormattedDate } from 'util/date'
+import { GlobalStyles } from 'constants/GlobalStyles';
+import { getFormattedDate } from 'util/date';
+import { useNavigation } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
+import { ExpenseItemProp } from '@util/types'
 
-interface Props {
-    description: string,
-    amount: number,
-    date: string,
+type RootStackParamList = {
+    ManageExpenses: {
+        description: string,
+        amount: number,
+        date: string,
+        expenseId: string,
+    } | undefined
 }
 
-const ExpenseItem = ({description, amount, date}: Props): JSX.Element => {
+const ExpenseItem = ({ description, amount, date, id }: ExpenseItemProp): JSX.Element => {
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
+    const expensePressedHandler = () => {
+        navigation.navigate('ManageExpenses', {
+            description: description,
+            amount: amount,
+            date: date,
+            expenseId: id,
+        });
+    }
+    
     return (
-        <Pressable>
+        <Pressable onPress={expensePressedHandler} style={({pressed}) => pressed && styles.pressed}>
             <View style={styles.expenseItem}>
                 <View>
                     <Text style={[styles.textBase, styles.description]}>{description}</Text>
@@ -59,5 +76,8 @@ const styles = StyleSheet.create({
     amount: {
         color: GlobalStyles.colors.primary500,
         fontWeight: 'bold'
+    },
+    pressed: {
+        opacity: 0.75
     }
 })

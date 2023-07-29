@@ -10,7 +10,7 @@ const renderExpenseItem = (itemData: any) => {
 }
 
 function ExpensesList({ expenses }: Props): JSX.Element {
-    console.log('EXPENSES', expenses)
+    console.log('EXPENSESs', expenses)
     return (
         <FlatList
             data={expenses}
