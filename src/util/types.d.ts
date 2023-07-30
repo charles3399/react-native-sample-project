@@ -25,6 +25,13 @@ export type ExpenseItemNavigationProp = {
     } | undefined
 }
 
+export interface ExpenseFormProp {
+    onSubmit: any,
+    onCancel: any,
+    submitButtonLabel: string,
+    defaultValues: any
+}
+
 export interface ExpenseSummaryProp {
     expenses?: any,
     periodName?: string
@@ -68,3 +75,9 @@ export interface contextProp {
 export type ACTIONTYPE = | { type: 'ADD', payload: any }
     | { type: 'UPDATE', payload: any }
     | { type: 'DELETE', payload: any }
+
+export interface TextInputProp {
+    label: string,
+    textInputConfig?: any,
+    style?: object
+}
