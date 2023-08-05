@@ -79,5 +79,6 @@ export type ACTIONTYPE = | { type: 'ADD', payload: any }
 export interface TextInputProp {
     label: string,
     textInputConfig?: any,
-    style?: object
+    style?: object,
+    invalid?: boolean
 }
