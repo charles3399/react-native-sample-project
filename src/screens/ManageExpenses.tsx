@@ -6,6 +6,7 @@ import ExpenseForm from '@components/ManageExpenses/ExpenseForm';
 import { GlobalStyles } from 'constants/GlobalStyles';
 import { ExpensesContext } from 'store/expensesContext';
 import { contextProp } from "@util/types";
+import { storeExpense } from 'util/http';
 
 function ManageExpenses({ route, navigation }: ManageExpensesProp): JSX.Element {
 
@@ -34,6 +35,7 @@ function ManageExpenses({ route, navigation }: ManageExpensesProp): JSX.Element 
         if (isEditing) {
             expenseCtx.updateExpense(editedExpenseId, expenseData)
         } else {
+            storeExpense(expenseData)
             expenseCtx.addExpense(expenseData)
         }
 
